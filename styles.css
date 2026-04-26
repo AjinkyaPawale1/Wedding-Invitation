@@ -21,11 +21,8 @@
     linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.34) 20%, rgba(13, 10, 15, 0.05) 44%, rgba(13, 10, 15, 0.03) 100%),
     url("assets/a-s-hero.png");
   --lunch-image:
-    linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.24) 52%, rgba(13, 10, 15, 0.02) 100%),
-    radial-gradient(circle at 50% 50%, #fff7df 0 3.4rem, transparent 3.6rem),
-    radial-gradient(circle at 30% 42%, #2f7a55 0 1.2rem, transparent 1.3rem),
-    radial-gradient(circle at 68% 42%, #d83178 0 1rem, transparent 1.1rem),
-    linear-gradient(135deg, #f5e6d3, #d4a574);
+    linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.22) 46%, rgba(13, 10, 15, 0.02) 100%),
+    url("assets/lunch.jpeg");
   --reception-image:
     linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.22) 48%, rgba(13, 10, 15, 0.03) 100%),
     url("assets/a-s-reception.png");
@@ -421,7 +418,7 @@ section {
   overflow: hidden;
   background:
     linear-gradient(to top, rgba(13, 10, 15, 0.95), rgba(13, 10, 15, 0.34), rgba(13, 10, 15, 0.18)),
-    url("assets/a-s-hero.png") center 20% / cover,
+    url("assets/main-couple.jpg") center 18% / cover,
     radial-gradient(circle at 50% 16%, rgba(255, 217, 139, 0.32), transparent 8rem),
     linear-gradient(180deg, #1b0810 0%, #3b1320 60%, #702540 100%);
   box-shadow: var(--shadow);
@@ -967,6 +964,11 @@ section {
   aspect-ratio: 1 / 1;
   height: auto;
   background-position: center, center top;
+  background-size: cover, cover;
+}
+
+.lunch-card .event-image {
+  background-position: center, center;
   background-size: cover, cover;
 }
 
@@ -1643,3 +1645,4 @@ section {
     transition-duration: 1ms !important;
   }
 }
+                                                                                                                                                
