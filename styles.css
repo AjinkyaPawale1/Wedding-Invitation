@@ -106,9 +106,26 @@ svg {
 .petal-field span:nth-child(6) { left: 88%; animation-delay: 3s; transform: scale(0.72); }
 .petal-field span:nth-child(7) { left: 96%; animation-delay: 7s; }
 
+body.opening-sequence .petal-field {
+  z-index: 24;
+}
+
+body.opening-sequence .petal-field span {
+  opacity: 0.82;
+  animation-duration: 3.6s;
+  animation-name: petal-fall, petal-twinkle;
+  animation-timing-function: cubic-bezier(0.18, 0.74, 0.32, 1), ease-in-out;
+  animation-iteration-count: infinite, infinite;
+}
+
 @keyframes petal-fall {
   0% { translate: 0 -2rem; rotate: 0deg; }
   100% { translate: -4rem 110vh; rotate: 540deg; }
+}
+
+@keyframes petal-twinkle {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(255, 217, 139, 0)); }
+  45% { filter: drop-shadow(0 0 12px rgba(255, 217, 139, 0.7)); }
 }
 
 .cover {
@@ -191,6 +208,21 @@ svg {
     rgba(20, 6, 10, 0.6);
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+.cover-panel::after {
+  content: "";
+  position: absolute;
+  inset: -30% -70%;
+  z-index: -1;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 217, 139, 0.26) 48%, transparent 61%);
+  transform: translateX(-42%) rotate(6deg);
+  opacity: 0;
+}
+
+.opening-sequence .cover-panel::after {
+  animation: opening-sheen 950ms ease forwards;
 }
 
 .couple-logo,
@@ -215,6 +247,10 @@ svg {
   height: 1px;
   margin: 0.72rem auto 0;
   background: linear-gradient(90deg, transparent, rgba(240, 194, 123, 0.62), transparent);
+}
+
+.opening-sequence .couple-logo {
+  animation: monogram-glow 950ms ease both;
 }
 
 .ganpati-mark {
@@ -389,6 +425,14 @@ section {
     radial-gradient(circle at 50% 16%, rgba(255, 217, 139, 0.32), transparent 8rem),
     linear-gradient(180deg, #1b0810 0%, #3b1320 60%, #702540 100%);
   box-shadow: var(--shadow);
+}
+
+.invite-open .hero-art {
+  animation: couple-reel-entry 1050ms cubic-bezier(0.18, 0.84, 0.28, 1) both;
+}
+
+.invite-open .hero-monogram {
+  animation: hero-monogram-glow 1400ms ease 250ms both;
 }
 
 .photo-aura {
@@ -658,6 +702,71 @@ section {
 @keyframes gentle-sway {
   0%, 100% { transform: rotate(-0.7deg) translateY(0); }
   50% { transform: rotate(0.8deg) translateY(-3px); }
+}
+
+@keyframes opening-sheen {
+  0% {
+    opacity: 0;
+    transform: translateX(-48%) rotate(6deg);
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(48%) rotate(6deg);
+  }
+}
+
+@keyframes monogram-glow {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(255, 217, 139, 0));
+  }
+  48% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 26px rgba(255, 217, 139, 0.78));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 12px rgba(255, 217, 139, 0.34));
+  }
+}
+
+@keyframes couple-reel-entry {
+  0% {
+    opacity: 0;
+    transform: translateY(2.2rem) scale(0.94);
+    filter: blur(6px) saturate(0.82);
+  }
+  58% {
+    opacity: 1;
+    transform: translateY(-0.35rem) scale(1.015);
+    filter: blur(0) saturate(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0) saturate(1);
+  }
+}
+
+@keyframes hero-monogram-glow {
+  0% {
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(255, 217, 139, 0));
+    transform: translateX(-50%) translateY(0.8rem) scale(0.94);
+  }
+  55% {
+    opacity: 1;
+    filter: drop-shadow(0 0 30px rgba(255, 217, 139, 0.78));
+    transform: translateX(-50%) translateY(0) scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(255, 217, 139, 0.34));
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
 }
 
 .hero-copy,

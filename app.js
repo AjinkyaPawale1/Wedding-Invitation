@@ -10,43 +10,44 @@ const venueMap = document.querySelector("#venueMap");
 const mapPinButton = document.querySelector("#mapPinButton");
 const shareInvite = document.querySelector("#shareInvite");
 
-let audioContext;
 let soundEnabled = true;
+let inviteOpened = false;
 
-function playCeremonialTone() {
+const backgroundSong = new Audio("assets/mahiye-jinna-sohna.mp3");
+backgroundSong.loop = true;
+backgroundSong.volume = 0.4;
+backgroundSong.preload = "auto";
+
+function playInviteSong() {
   if (!soundEnabled) return;
-  const AudioCtx = window.AudioContext || window.webkitAudioContext;
-  if (!AudioCtx) return;
-
-  audioContext ||= new AudioCtx();
-  const now = audioContext.currentTime;
-  const notes = [261.63, 329.63, 392, 523.25, 659.25];
-
-  notes.forEach((frequency, index) => {
-    const osc = audioContext.createOscillator();
-    const gain = audioContext.createGain();
-    osc.type = index % 2 ? "triangle" : "sine";
-    osc.frequency.value = frequency;
-    gain.gain.setValueAtTime(0, now + index * 0.07);
-    gain.gain.linearRampToValueAtTime(0.07, now + index * 0.07 + 0.03);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + index * 0.07 + 0.72);
-    osc.connect(gain).connect(audioContext.destination);
-    osc.start(now + index * 0.07);
-    osc.stop(now + index * 0.07 + 0.75);
+  backgroundSong.play().catch(() => {
+    soundEnabled = false;
+    soundToggle.classList.add("is-muted");
+    soundToggle.setAttribute("aria-pressed", "true");
   });
 }
 
 openButton.addEventListener("click", () => {
-  invite.classList.add("invite-open");
-  playCeremonialTone();
-  setTimeout(() => document.querySelector(".hero")?.scrollIntoView({ behavior: "smooth" }), 250);
+  if (inviteOpened) return;
+  inviteOpened = true;
+  openButton.disabled = true;
+  document.body.classList.add("opening-sequence");
+  invite.classList.add("opening-sequence");
+  playInviteSong();
+  setTimeout(() => invite.classList.add("invite-open"), 950);
+  setTimeout(() => document.querySelector(".hero")?.scrollIntoView({ behavior: "smooth" }), 1250);
+  setTimeout(() => document.body.classList.remove("opening-sequence"), 3400);
 });
 
 soundToggle.addEventListener("click", () => {
   soundEnabled = !soundEnabled;
   soundToggle.classList.toggle("is-muted", !soundEnabled);
   soundToggle.setAttribute("aria-pressed", String(!soundEnabled));
-  if (soundEnabled) playCeremonialTone();
+  if (soundEnabled) {
+    playInviteSong();
+  } else {
+    backgroundSong.pause();
+  }
 });
 
 langButtons.forEach((button) => {
@@ -118,7 +119,7 @@ function setupScratchCard() {
     }
     if (transparent / (pixels.length / 16) > 0.38) {
       scratchCard.classList.add("is-revealed");
-      playCeremonialTone();
+      playInviteSong();
     }
   }
 
@@ -146,7 +147,7 @@ function setupScratchCard() {
 
   scratchButton?.addEventListener("click", () => {
     scratchCard.classList.add("is-revealed");
-    playCeremonialTone();
+    playInviteSong();
   });
 }
 
