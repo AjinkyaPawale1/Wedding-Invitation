@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#220b12" />
+    <meta
+      name="description"
+      content="Wedding invitation for Ajinkya Pawale and Surbhi Ghag on 19 June 2026 at GCC Hotel and Club, Mira Road East, Thane."
+    />
+    <title>Ajinkya & Surbhi | 19 June Wedding Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="petal-field" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <main id="invite" class="invite-shell" data-lang="en">
+      <section class="cover" aria-label="Invitation cover">
+        <div class="toran" aria-hidden="true"></div>
+        <div class="cover-panel">
+          <div class="couple-logo" aria-label="Ajinkya and Surbhi logo">A<span>&amp;</span>S</div>
+          <div class="ganpati-mark" aria-hidden="true">श्री</div>
+          <p class="kicker">
+            <span data-en>With immense joy and love</span>
+            <span data-mr>आनंदाने व प्रेमाने</span>
+          </p>
+          <h1>
+            <span>Ajinkya</span>
+            <i>&</i>
+            <span>Surbhi</span>
+          </h1>
+          <p class="cover-date">
+            <span data-en>19 June 2026</span>
+            <span data-mr>१९ जून २०२६</span>
+          </p>
+          <button class="open-button" type="button" id="openInvite">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7.5 12 13l8-5.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z" />
+              <path d="M5 6h14l-7 5L5 6Z" />
+            </svg>
+            <span data-en>Open Invitation</span>
+            <span data-mr>आमंत्रण उघडा</span>
+          </button>
+        </div>
+      </section>
+
+      <nav class="topbar" aria-label="Invitation controls">
+        <button class="icon-button" type="button" id="soundToggle" aria-label="Toggle ceremonial sound">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 9v6h4l5 4V5L8 9H4Z" />
+            <path d="M16 8.5a5 5 0 0 1 0 7" />
+          </svg>
+        </button>
+        <a class="page-link" href="index.html">
+          <span data-en>Full invite</span>
+          <span data-mr>पूर्ण आमंत्रण</span>
+        </a>
+        <div class="lang-switch" aria-label="Language">
+          <button type="button" class="active" data-set-lang="en">EN</button>
+          <button type="button" data-set-lang="mr">मराठी</button>
+        </div>
+      </nav>
+
+      <section class="hero reveal">
+        <div class="hero-art wedding-art awaiting-art" aria-label="Photo-inspired wedding artwork placeholder">
+          <div class="moon" aria-hidden="true"></div>
+          <div class="mandap-lines" aria-hidden="true"></div>
+          <div class="photo-aura traditional-aura" aria-hidden="true"></div>
+          <div class="hero-monogram" aria-hidden="true">A<span>&amp;</span>S</div>
+        </div>
+        <div class="hero-copy">
+          <p class="kicker">
+            <span data-en>Wedding Invitation of</span>
+            <span data-mr>डिजिटल विवाह आमंत्रण</span>
+          </p>
+          <h2>
+            <span data-en>Ajinkya Pawale & Surbhi Ghag</span>
+            <span data-mr>अजिंक्य पवळे आणि सुरभी घाग</span>
+          </h2>
+          <p>
+            <span data-en>Two families, two joyful days, and one beautiful beginning. We would love to celebrate with you.</span>
+            <span data-mr>दोन कुटुंबे, दोन आनंदाचे दिवस, आणि एका सुंदर प्रवासाची सुरुवात. आपल्या उपस्थितीने हा सोहळा अधिक मंगलमय करावा.</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="scratch-section reveal" aria-label="Reveal the wedding dates">
+        <div class="scratch-card" id="scratchCard">
+          <div class="scratch-content">
+            <p class="kicker">
+              <span data-en>Dates revealed</span>
+              <span data-mr>शुभ दिनांक</span>
+            </p>
+            <div class="revealed-date">
+              <span>19</span>
+            </div>
+            <p>
+              <span data-en>June 2026</span>
+              <span data-mr>जून २०२६</span>
+            </p>
+          </div>
+          <canvas class="scratch-canvas" id="scratchCanvas" width="720" height="460" aria-label="Scratch golden layer to reveal dates"></canvas>
+          <button type="button" id="scratchButton">
+            <span data-en>Tap or scratch the gold</span>
+            <span data-mr>सोनरी थर स्क्रॅच करा</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="countdown-band reveal" aria-label="Countdown">
+        <p>
+          <span data-en>Until the wedding muhurat</span>
+          <span data-mr>विवाह मुहूर्तापर्यंत</span>
+        </p>
+        <div class="countdown" id="countdown">
+          <span><strong>--</strong><small data-en>Days</small><small data-mr>दिवस</small></span>
+          <span><strong>--</strong><small data-en>Hours</small><small data-mr>तास</small></span>
+          <span><strong>--</strong><small data-en>Minutes</small><small data-mr>मिनिटे</small></span>
+        </div>
+      </section>
+
+      <section class="events reveal" aria-label="Wedding events">
+        <div class="section-heading">
+          <p class="kicker">
+            <span data-en>Celebration Schedule</span>
+            <span data-mr>समारंभाचे वेळापत्रक</span>
+          </p>
+          <h2>
+            <span data-en>Wedding muhurat, lunch and reception</span>
+            <span data-mr>विवाह मुहूर्त, स्नेहभोजन आणि स्वागत समारंभ</span>
+          </h2>
+        </div>
+
+        <div class="event-timeline">
+          <article class="event-card" style="--event-image: var(--wedding-image)">
+            <div class="event-image" aria-hidden="true"></div>
+            <div class="event-meta">
+              <span class="meta-icon calendar-icon"></span>
+              <p class="event-date">19 June 2026</p>
+            </div>
+            <h3>
+              <span data-en>Wedding Muhurat</span>
+              <span data-mr>विवाह मुहूर्त</span>
+            </h3>
+            <div class="event-meta"><span class="meta-icon time-icon"></span><strong>12:40 PM</strong></div>
+            <div class="event-meta"><span class="meta-icon location-icon"></span><p>Emerald 1, Ground Floor</p></div>
+            <p class="event-note">
+              <span data-en>The sacred moment where two families come together.</span>
+              <span data-mr>दोन कुटुंबांना एकत्र आणणारा मंगल क्षण.</span>
+            </p>
+          </article>
+
+          <article class="event-card lunch-card" style="--event-image: var(--lunch-image)">
+            <div class="event-image" aria-hidden="true"></div>
+            <div class="cutlery-badge" aria-hidden="true">
+              <span class="fork-icon"></span>
+              <span class="spoon-icon"></span>
+            </div>
+            <div class="event-meta">
+              <span class="meta-icon calendar-icon"></span>
+              <p class="event-date">19 June 2026</p>
+            </div>
+            <h3>
+              <span data-en>Lunch</span>
+              <span data-mr>स्नेहभोजन</span>
+            </h3>
+            <div class="event-meta"><span class="meta-icon time-icon"></span><strong>1:00 PM - 3:30 PM</strong></div>
+            <div class="event-meta"><span class="meta-icon location-icon"></span><p>Emerald 2, First Floor</p></div>
+            <p class="event-note">
+              <span data-en>Join us for lunch after the wedding rituals.</span>
+              <span data-mr>विवाह विधीनंतर स्नेहभोजनासाठी अवश्य या.</span>
+            </p>
+          </article>
+
+          <article class="event-card" style="--event-image: var(--reception-image)">
+            <div class="event-image" aria-hidden="true"></div>
+            <div class="event-meta">
+              <span class="meta-icon calendar-icon"></span>
+              <p class="event-date">19 June 2026</p>
+            </div>
+            <h3>
+              <span data-en>Reception</span>
+              <span data-mr>स्वागत समारंभ</span>
+            </h3>
+            <div class="event-meta"><span class="meta-icon time-icon"></span><strong>1:30 PM - 3:30 PM</strong></div>
+            <div class="event-meta"><span class="meta-icon location-icon"></span><p>Emerald 1, Ground Floor</p></div>
+            <p class="event-note">
+              <span data-en>A warm reception celebrating our new journey together.</span>
+              <span data-mr>नव्या प्रवासाच्या आनंदासाठी आपले मनःपूर्वक स्वागत.</span>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="map-section reveal" aria-label="Venue map">
+        <div class="map-copy">
+          <p class="kicker">
+            <span data-en>Find the venue</span>
+            <span data-mr>स्थळाचा नकाशा</span>
+          </p>
+          <h2>GCC Hotel & Club</h2>
+          <p>Emerald Hall, Mira Road East, Thane</p>
+        </div>
+
+        <div class="interactive-map" id="venueMap">
+          <svg viewBox="0 0 520 330" aria-hidden="true">
+            <path class="road wide" d="M20 270 C140 210 160 280 260 220 S380 130 500 92" />
+            <path class="road" d="M60 80 C160 120 210 118 290 80 S430 54 492 35" />
+            <path class="road" d="M106 310 C132 226 180 182 268 162 S410 140 480 190" />
+            <path class="route" d="M70 256 C154 220 172 250 246 204 S358 132 425 112" />
+            <circle class="route-dot start" cx="70" cy="256" r="8" />
+            <g class="pin" transform="translate(425 112)">
+              <path d="M0 58s34-31 34-58A34 34 0 0 0-34 0c0 27 34 58 34 58Z" />
+              <circle cx="0" cy="0" r="12" />
+            </g>
+            <text x="250" y="72">Mira Bhayandar Road</text>
+            <text x="294" y="244">Emerald Hall</text>
+          </svg>
+          <button class="map-pin-button" type="button" id="mapPinButton">
+            <span data-en>Tap venue pin</span>
+            <span data-mr>स्थळ पिन पहा</span>
+          </button>
+          <div class="map-popover" id="mapPopover">
+            <strong>GCC Hotel & Club</strong>
+          <span>Emerald 1: Wedding + Reception</span>
+          <span>Emerald 2: Lunch</span>
+        </div>
+        </div>
+
+        <div class="actions">
+          <a class="action-button primary" href="https://maps.app.goo.gl/UwAvyfMiaUZUnqjW8" target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z" />
+              <path d="M12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+            </svg>
+            <span data-en>Open Google Maps</span>
+            <span data-mr>Google Maps उघडा</span>
+          </a>
+          <a class="action-button" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ajinkya%20%26%20Surbhi%20Wedding&dates=20260619T071000Z/20260619T100000Z&details=Wedding%20muhurat%20at%2012%3A40%20PM%2C%20Reception%201%3A30%20PM%20to%203%3A30%20PM%2C%20Lunch%201%3A00%20PM%20to%203%3A30%20PM.&location=GCC%20Hotel%20%26%20Club%2C%20Emerald%20Hall%2C%20Mira%20Road%20East%2C%20Thane" target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+            <span data-en>Add to Calendar</span>
+            <span data-mr>कॅलेंडरमध्ये जोडा</span>
+          </a>
+          <button class="action-button" type="button" id="shareInvite">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 12h8M14 6l6 6-6 6M4 5v14" />
+            </svg>
+            <span data-en>Share Invite</span>
+            <span data-mr>आमंत्रण शेअर करा</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="families reveal" aria-label="Family invitation">
+        <div class="ornament" aria-hidden="true"></div>
+        <div class="family-grid">
+          <article>
+            <p class="kicker">
+              <span data-en>Bride's Family</span>
+              <span data-mr>वधू पक्ष</span>
+            </p>
+            <p>
+              <span data-en>Vijay Atmaram Ghag, Rajshri Vijay Ghag, Sumedha Vijay Ghag, and the Ghag family.</span>
+              <span data-mr>विजय आत्माराम घाग, राजश्री विजय घाग, सुमेधा विजय घाग आणि घाग परिवार.</span>
+            </p>
+          </article>
+          <article>
+            <p class="kicker">
+              <span data-en>Groom's Family</span>
+              <span data-mr>वर पक्ष</span>
+            </p>
+            <p>
+              <span data-en>Avinash Martand Pawale, Nilambari Avinash Pawale, and the Pawale family.</span>
+              <span data-mr>अविनाश मार्तंड पवळे, नीलांबरी अविनाश पवळे आणि पवळे परिवार.</span>
+            </p>
+          </article>
+        </div>
+        <p class="gift-line">
+          <span data-en>Your presence and blessings are the sweetest gift.</span>
+          <span data-mr>आपली उपस्थिती आणि आशीर्वाद हाच आमचा आहेर.</span>
+        </p>
+      </section>
+
+      <section class="thank-you reveal" aria-label="Thank you">
+        <div class="corner corner-left" aria-hidden="true"></div>
+        <div class="corner corner-right" aria-hidden="true"></div>
+        <p class="gratitude-label">
+          <span data-en>With Gratitude</span>
+          <span data-mr>कृतज्ञतापूर्वक</span>
+        </p>
+        <div class="thank-you-photo" aria-hidden="true"></div>
+        <h2>
+          <span data-en>Thank You</span>
+          <span data-mr>मनःपूर्वक धन्यवाद</span>
+        </h2>
+        <p>
+          <span data-en>Your presence in our lives means the world to us. We are deeply grateful for your love, support, and blessings as we begin this beautiful journey together.</span>
+          <span data-mr>आपले प्रेम, साथ आणि आशीर्वाद आमच्यासाठी अमूल्य आहेत. या सुंदर प्रवासाच्या सुरुवातीला आपण सोबत आहात, यासाठी मनःपूर्वक धन्यवाद.</span>
+        </p>
+        <div class="thank-you-icons" aria-hidden="true"><span>☆</span><span>♡</span><span>☆</span></div>
+        <p class="signature">
+          <span data-en>With all our love, Ajinkya & Surbhi</span>
+          <span data-mr>आपल्या प्रेमाने, अजिंक्य आणि सुरभी</span>
+        </p>
+        <p class="forever">
+          <span data-en>Forever & Always</span>
+          <span data-mr>सदैव आणि कायम</span>
+        </p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+                                                                                                                                                                                                                                                         
