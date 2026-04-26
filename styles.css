@@ -15,10 +15,10 @@
   --white: #fffdf7;
   --shadow: 0 26px 80px rgba(34, 11, 18, 0.26);
   --haldi-image:
-    linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.22) 48%, rgba(13, 10, 15, 0.02) 100%),
+    linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.32) 20%, rgba(13, 10, 15, 0.04) 44%, rgba(13, 10, 15, 0.02) 100%),
     url("assets/a-s-haldi.png");
   --wedding-image:
-    linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.28) 48%, rgba(13, 10, 15, 0.05) 100%),
+    linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.34) 20%, rgba(13, 10, 15, 0.05) 44%, rgba(13, 10, 15, 0.03) 100%),
     url("assets/a-s-hero.png");
   --lunch-image:
     linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.24) 52%, rgba(13, 10, 15, 0.02) 100%),
@@ -839,6 +839,7 @@ section {
 }
 
 .event-image {
+  position: relative;
   height: 15.2rem;
   margin: 0 -1.9rem 1.65rem;
   background: var(--event-image);
@@ -847,11 +848,15 @@ section {
 }
 
 .haldi-card .event-image {
+  aspect-ratio: 1 / 1;
+  height: auto;
   background-position: center, center top;
   background-size: cover, cover;
 }
 
 .wedding-card .event-image {
+  aspect-ratio: 1 / 1;
+  height: auto;
   background-position: center, center top;
   background-size: cover, cover;
 }
@@ -864,6 +869,13 @@ section {
   top: 9rem;
   height: 7rem;
   background: linear-gradient(to top, #0d0a0f, rgba(13, 10, 15, 0));
+}
+
+.haldi-card .event-image::after,
+.wedding-card .event-image::after {
+  top: auto;
+  bottom: 0;
+  height: 6rem;
 }
 
 .cutlery-badge {
@@ -1486,6 +1498,7 @@ section {
 
   .haldi-card .event-image,
   .wedding-card .event-image {
+    height: auto;
     background-position: center, center top;
   }
 
