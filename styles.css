@@ -847,7 +847,12 @@ section {
 }
 
 .haldi-card .event-image {
-  background-position: center, center 12%;
+  background-position: center, center top;
+  background-size: cover, cover;
+}
+
+.wedding-card .event-image {
+  background-position: center, center top;
   background-size: cover, cover;
 }
 
@@ -1473,6 +1478,15 @@ section {
 
   .event-card {
     min-height: 13rem;
+  }
+
+  .event-image {
+    height: clamp(16.5rem, 62vw, 19rem);
+  }
+
+  .haldi-card .event-image,
+  .wedding-card .event-image {
+    background-position: center, center top;
   }
 
   .hero-art {
