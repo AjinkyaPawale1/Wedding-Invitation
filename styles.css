@@ -228,6 +228,7 @@ body.opening-sequence .petal-field span {
   font-family: "Great Vibes", "Snell Roundhand", "Apple Chancery", cursive;
   font-size: clamp(3rem, 11vw, 5.2rem);
   line-height: 0.8;
+  text-transform: uppercase;
   text-shadow: 0 12px 38px rgba(0, 0, 0, 0.38);
 }
 
@@ -281,6 +282,15 @@ body.opening-sequence .petal-field span {
   font-weight: 500;
   line-height: 0.92;
   text-shadow: 0 10px 34px rgba(0, 0, 0, 0.38);
+}
+
+.cover h1 span {
+  text-transform: capitalize;
+}
+
+.cover h1 span::first-letter {
+  font-size: 1.12em;
+  text-transform: uppercase;
 }
 
 .cover h1 i {
@@ -785,6 +795,24 @@ section {
   letter-spacing: 0.04em;
   font-weight: 500;
   line-height: 1;
+}
+
+.hero-copy h2.couple-name {
+  font-size: clamp(3.1rem, 10vw, 5.6rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-shadow:
+    0 0 24px rgba(255, 217, 139, 0.18),
+    0 14px 42px rgba(0, 0, 0, 0.38);
+}
+
+.hero-copy h2.couple-name::after {
+  content: "";
+  display: block;
+  width: min(14rem, 58%);
+  height: 1px;
+  margin: 1rem auto 0;
+  background: linear-gradient(90deg, transparent, rgba(240, 194, 123, 0.78), transparent);
 }
 
 .hero-copy p:not(.kicker),
@@ -1645,4 +1673,3 @@ section {
     transition-duration: 1ms !important;
   }
 }
-                                                                                                                                                
