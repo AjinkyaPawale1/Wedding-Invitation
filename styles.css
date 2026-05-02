@@ -225,10 +225,13 @@ body.opening-sequence .petal-field span {
 .couple-logo,
 .hero-monogram {
   color: #f0c27b;
-  font-family: "Great Vibes", "Snell Roundhand", "Apple Chancery", cursive;
-  font-size: clamp(3rem, 11vw, 5.2rem);
-  line-height: 0.8;
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.9;
   text-transform: uppercase;
+  letter-spacing: 0.03em;
   text-shadow: 0 12px 38px rgba(0, 0, 0, 0.38);
 }
 
@@ -277,9 +280,10 @@ body.opening-sequence .petal-field span {
   margin: 0;
   display: grid;
   gap: 0.2rem;
-  font-family: "Great Vibes", "Snell Roundhand", "Apple Chancery", Georgia, "Times New Roman", serif;
-  font-size: clamp(3.4rem, 16vw, 6.2rem);
-  font-weight: 500;
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: clamp(3.1rem, 14vw, 5.8rem);
+  font-style: italic;
+  font-weight: 700;
   line-height: 0.92;
   text-shadow: 0 10px 34px rgba(0, 0, 0, 0.38);
 }
@@ -289,7 +293,7 @@ body.opening-sequence .petal-field span {
 }
 
 .cover h1 span::first-letter {
-  font-size: 1.12em;
+  font-size: 1.18em;
   text-transform: uppercase;
 }
 
@@ -1583,12 +1587,12 @@ section {
 }
 
 .gift-line {
-  max-width: 44rem;
+  max-width: 40rem;
   margin: 0 auto;
-  color: #ffd98b !important;
+  color: #ead0a0 !important;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.55rem, 6vw, 2.6rem) !important;
-  line-height: 1.25 !important;
+  font-size: clamp(1.05rem, 3vw, 1.35rem) !important;
+  line-height: 1.55 !important;
 }
 
 .reveal {
