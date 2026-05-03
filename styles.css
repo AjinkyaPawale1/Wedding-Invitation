@@ -241,23 +241,23 @@ body.opening-sequence .petal-field span {
   width: min(10.5rem, 50vw);
   height: auto;
   object-fit: contain;
-  mix-blend-mode: multiply;
-  filter: drop-shadow(0 14px 24px rgba(111, 71, 79, 0.18));
+  mix-blend-mode: normal;
+  filter: drop-shadow(0 14px 24px rgba(111, 71, 79, 0.18)) drop-shadow(0 0 16px rgba(224, 170, 62, 0.24));
 }
 
 .couple-logo img,
 .hero-monogram img,
 .signature-logo img {
   object-fit: contain;
-  filter: drop-shadow(0 12px 24px rgba(240, 194, 123, 0.2));
 }
 
 .hero-monogram img,
 .signature-logo img {
   width: min(5.8rem, 28vw);
   height: auto;
-  opacity: 0.86;
+  opacity: 0.92;
   mix-blend-mode: normal;
+  filter: drop-shadow(0 12px 24px rgba(240, 194, 123, 0.22));
 }
 
 .couple-logo::after {
@@ -1707,7 +1707,7 @@ section {
 }
 
 .signature-logo img {
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
 }
 
 .corner {
