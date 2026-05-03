@@ -1158,7 +1158,7 @@ section {
   color: var(--event-muted, #815f46);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.2rem;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .event-card strong {
@@ -1177,6 +1177,7 @@ section {
 
 .event-note {
   margin-top: 1.85rem;
+  max-width: 21rem;
 }
 
 .haldi-card {
@@ -1185,9 +1186,9 @@ section {
   --event-glow: rgba(255, 212, 64, 0.34);
   --event-ink: #56310f;
   --event-heading: #67370d;
-  --event-muted: #6d481d;
+  --event-muted: #5d3815;
   --event-strong: #48270c;
-  --event-accent: #b57112;
+  --event-accent: #985d0a;
   border-color: rgba(194, 136, 36, 0.38);
   box-shadow: 0 22px 72px rgba(172, 118, 23, 0.22);
 }
@@ -1198,9 +1199,9 @@ section {
   --event-glow: rgba(191, 63, 83, 0.18);
   --event-ink: #5a2028;
   --event-heading: #7e1f37;
-  --event-muted: #775052;
+  --event-muted: #664244;
   --event-strong: #4a1721;
-  --event-accent: #b84f59;
+  --event-accent: #9e3a48;
   border-color: rgba(184, 79, 89, 0.32);
 }
 
@@ -1210,9 +1211,9 @@ section {
   --event-glow: rgba(241, 189, 53, 0.22);
   --event-ink: #31451d;
   --event-heading: #31613f;
-  --event-muted: #5d6138;
+  --event-muted: #4d542d;
   --event-strong: #293a18;
-  --event-accent: #b55727;
+  --event-accent: #98461f;
   border-color: rgba(47, 122, 85, 0.34);
 }
 
@@ -1222,9 +1223,9 @@ section {
   --event-glow: rgba(128, 180, 240, 0.22);
   --event-ink: #f4f8ff;
   --event-heading: #e7f0ff;
-  --event-muted: #c2d6ef;
+  --event-muted: #d8e8fb;
   --event-strong: #ffffff;
-  --event-accent: #9fcbff;
+  --event-accent: #b9dcff;
   border-color: rgba(130, 178, 232, 0.38);
 }
 
