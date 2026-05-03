@@ -1,8 +1,8 @@
 :root {
-  --night: #220b12;
-  --plum-night: #160e1b;
+  --night: #2d1730;
+  --plum-night: #28172d;
   --card-night: #0d0a0f;
-  --night-soft: #35111c;
+  --night-soft: #442044;
   --maroon: #7d1834;
   --pink: #d83178;
   --haldi: #f1bd35;
@@ -41,9 +41,9 @@ body {
   margin: 0;
   color: var(--ivory);
   background:
-    radial-gradient(circle at 13% 8%, rgba(125, 24, 52, 0.24), transparent 22rem),
-    radial-gradient(circle at 85% 5%, rgba(228, 182, 91, 0.12), transparent 24rem),
-    linear-gradient(180deg, #160e1b, #0d0a0f 42%, #160e1b 100%);
+    radial-gradient(circle at 13% 8%, rgba(190, 102, 143, 0.22), transparent 22rem),
+    radial-gradient(circle at 85% 5%, rgba(228, 182, 91, 0.18), transparent 24rem),
+    linear-gradient(180deg, #3f2848, #35243d 42%, #3a2543 100%);
   overflow-x: hidden;
 }
 
@@ -69,6 +69,11 @@ svg {
 [data-lang="mr"] [data-en],
 [data-lang="en"] [data-mr] {
   display: none;
+}
+
+[data-mr] {
+  font-family: "Noto Serif Devanagari", "Kohinoor Devanagari", "Nirmala UI", serif;
+  letter-spacing: 0;
 }
 
 .invite-shell {
@@ -449,8 +454,9 @@ section {
   gap: 2rem;
   padding-top: 2rem;
   background:
-    radial-gradient(circle at 82% 12%, rgba(125, 24, 52, 0.22), transparent 20rem),
-    linear-gradient(180deg, #160e1b 0%, #0d0a0f 100%);
+    radial-gradient(circle at 82% 12%, rgba(216, 123, 153, 0.22), transparent 20rem),
+    radial-gradient(circle at 8% 16%, rgba(228, 182, 91, 0.14), transparent 19rem),
+    linear-gradient(180deg, #42294b 0%, #34243c 100%);
 }
 
 .hero-art {
@@ -874,12 +880,20 @@ section {
   line-height: 1.8;
 }
 
+.hero-copy p:not(.kicker) {
+  color: #dec0a0;
+  font-size: clamp(1.18rem, 3.6vw, 1.5rem);
+  line-height: 1.7;
+}
+
 .scratch-section {
   display: grid;
   place-items: center;
   background:
-    linear-gradient(135deg, rgba(13, 10, 15, 0.98), rgba(22, 14, 27, 0.96)),
-    repeating-linear-gradient(90deg, transparent, transparent 18px, rgba(255, 255, 255, 0.08) 20px);
+    radial-gradient(circle at 15% 12%, rgba(228, 182, 91, 0.15), transparent 18rem),
+    radial-gradient(circle at 85% 8%, rgba(216, 123, 153, 0.18), transparent 18rem),
+    linear-gradient(135deg, rgba(67, 42, 75, 0.98), rgba(53, 37, 62, 0.96)),
+    repeating-linear-gradient(90deg, transparent, transparent 18px, rgba(255, 255, 255, 0.07) 20px);
 }
 
 .scratch-card {
@@ -895,7 +909,7 @@ section {
   color: var(--ivory);
   border: 1px solid rgba(255, 217, 139, 0.28);
   border-radius: 10px;
-  background: rgba(15, 5, 9, 0.48);
+  background: rgba(76, 48, 82, 0.58);
   overflow: hidden;
 }
 
@@ -991,8 +1005,9 @@ section {
 
 .events {
   background:
-    radial-gradient(circle at 12% 0%, rgba(228, 182, 91, 0.12), transparent 18rem),
-    linear-gradient(180deg, #160e1b, #0d0a0f);
+    radial-gradient(circle at 12% 0%, rgba(228, 182, 91, 0.16), transparent 18rem),
+    radial-gradient(circle at 86% 10%, rgba(216, 123, 153, 0.18), transparent 20rem),
+    linear-gradient(180deg, #3b2644, #34243d);
 }
 
 .events .section-heading .kicker {
@@ -1176,7 +1191,8 @@ section {
 }
 
 .event-note {
-  margin-top: 1.85rem;
+  margin-top: auto;
+  padding-top: 1.45rem;
   max-width: 21rem;
 }
 
@@ -1463,7 +1479,9 @@ section {
 
 .map-section {
   background:
-    linear-gradient(180deg, #0d0a0f, #160e1b);
+    radial-gradient(circle at 82% 8%, rgba(216, 123, 153, 0.2), transparent 21rem),
+    radial-gradient(circle at 12% 0%, rgba(228, 182, 91, 0.14), transparent 18rem),
+    linear-gradient(180deg, #34243d, #42294b);
 }
 
 .interactive-map {

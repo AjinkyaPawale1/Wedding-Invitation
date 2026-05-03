@@ -11,4 +11,5 @@ Static interactive wedding invitation site.
 
 ## GitHub Pages
 
-This repo is configured 
+This repo is configured for GitHub Pages through `.github/workflows/pages.yml`.
+After pushing to GitHub, enable Pages with **Source: GitHub Actions** in the repository settings.
