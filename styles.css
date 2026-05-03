@@ -18,8 +18,8 @@
     linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.32) 20%, rgba(13, 10, 15, 0.04) 44%, rgba(13, 10, 15, 0.02) 100%),
     url("assets/a-s-haldi.png");
   --wedding-image:
-    linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.5) 34%, rgba(13, 10, 15, 0.18) 72%, rgba(13, 10, 15, 0.04) 100%),
-    url("assets/main-couple.jpg");
+    linear-gradient(to top, rgba(80, 24, 34, 0.78) 0%, rgba(80, 24, 34, 0.34) 38%, rgba(80, 24, 34, 0.06) 100%),
+    url("assets/a-s-hero.png");
   --lunch-image:
     linear-gradient(to top, #0d0a0f 0%, rgba(13, 10, 15, 0.22) 46%, rgba(13, 10, 15, 0.02) 100%),
     url("assets/lunch.jpeg");
@@ -135,8 +135,8 @@ body.opening-sequence .petal-field span {
   overflow: hidden;
   color: #6c3446;
   background:
-    linear-gradient(180deg, rgba(255, 250, 241, 0.12), rgba(255, 239, 229, 0.22)),
-    url("assets/entry-page-format.jpeg") center top / cover,
+    linear-gradient(180deg, rgba(255, 250, 241, 0.1), rgba(255, 239, 229, 0.2)),
+    url("assets/entry-page-format.jpeg") center top / auto 100% no-repeat,
     linear-gradient(180deg, #fff8ee, #f8e9e3);
   transition: opacity 700ms ease, visibility 700ms ease, transform 700ms ease;
 }
@@ -240,14 +240,19 @@ body.opening-sequence .petal-field span {
   filter: drop-shadow(0 14px 24px rgba(111, 71, 79, 0.18));
 }
 
+.couple-logo img,
+.hero-monogram img,
+.signature-logo img {
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(240, 194, 123, 0.2));
+}
+
 .hero-monogram img,
 .signature-logo img {
   width: min(5.8rem, 28vw);
   height: auto;
-  object-fit: contain;
-  opacity: 0.64;
-  mix-blend-mode: screen;
-  filter: drop-shadow(0 12px 24px rgba(240, 194, 123, 0.2));
+  opacity: 0.86;
+  mix-blend-mode: normal;
 }
 
 .couple-logo::after {
@@ -282,6 +287,12 @@ body.opening-sequence .petal-field span {
   line-height: 1;
 }
 
+.ganpati-mark img {
+  width: 2.35rem;
+  height: 2.35rem;
+  object-fit: contain;
+}
+
 .kicker {
   margin: 0;
   color: #a96270;
@@ -293,10 +304,14 @@ body.opening-sequence .petal-field span {
 
 .cover h1 {
   margin: 0;
-  display: grid;
-  gap: 0.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  column-gap: clamp(0.35rem, 2vw, 0.75rem);
+  row-gap: 0.08rem;
   font-family: "Playfair Display", "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  font-size: clamp(2.45rem, 11vw, 4.7rem);
+  font-size: clamp(2.05rem, 9vw, 4rem);
   font-style: italic;
   font-weight: 700;
   line-height: 0.92;
@@ -850,36 +865,6 @@ section {
   background: linear-gradient(90deg, transparent, rgba(240, 194, 123, 0.78), transparent);
 }
 
-.scroll-cue {
-  display: grid;
-  place-items: center;
-  width: 2rem;
-  height: 3.2rem;
-  margin: 1.65rem auto 0;
-  border: 1px solid rgba(240, 194, 123, 0.46);
-  border-radius: 999px;
-  opacity: 0.78;
-}
-
-.scroll-cue span {
-  width: 0.38rem;
-  height: 0.38rem;
-  border-radius: 50%;
-  background: #f0c27b;
-  animation: scroll-cue-drop 1.7s ease-in-out infinite;
-}
-
-@keyframes scroll-cue-drop {
-  0%, 100% {
-    opacity: 0.25;
-    transform: translateY(-0.55rem);
-  }
-  45% {
-    opacity: 1;
-    transform: translateY(0.55rem);
-  }
-}
-
 .hero-copy p:not(.kicker),
 .map-copy p,
 .families p {
@@ -1010,21 +995,33 @@ section {
     linear-gradient(180deg, #160e1b, #0d0a0f);
 }
 
+.events .section-heading .kicker {
+  color: #f4d6a4;
+  font-size: clamp(1.15rem, 3vw, 1.6rem);
+  letter-spacing: 0.13em;
+}
+
 .event-timeline {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+  align-items: stretch;
+  gap: 1.1rem;
   max-width: 75rem;
   margin: 2.2rem auto 0;
 }
 
 .event-card {
   position: relative;
-  min-height: 34rem;
-  padding: 0 1.9rem 1.85rem;
-  border: 1px solid rgba(212, 165, 116, 0.22);
+  min-height: 35rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.65rem 1.85rem;
+  border: 1px solid rgba(212, 165, 116, 0.26);
   border-radius: 24px;
-  background: #0d0a0f;
+  color: var(--event-ink, #4b2a1f);
+  background:
+    radial-gradient(circle at 12% 8%, var(--event-glow, rgba(255, 255, 255, 0.16)), transparent 10rem),
+    linear-gradient(180deg, var(--event-bg-top, #fff7df), var(--event-bg-bottom, #f2dac8));
   box-shadow: 0 22px 80px rgba(0, 0, 0, 0.32);
   overflow: hidden;
 }
@@ -1039,21 +1036,20 @@ section {
 
 .event-image {
   position: relative;
-  height: 15.2rem;
-  margin: 0 -1.9rem 1.65rem;
+  height: 15rem;
+  margin: 0 -1.65rem 1.45rem;
   background: var(--event-image);
   background-position: center;
   background-size: cover;
 }
 
 .haldi-card .event-image {
-  display: none;
+  background-position: center, center 14%;
+  background-size: cover, cover;
 }
 
 .wedding-card .event-image {
-  aspect-ratio: 1 / 1;
-  height: auto;
-  background-position: center, center top;
+  background-position: center, center 16%;
   background-size: cover, cover;
 }
 
@@ -1067,16 +1063,9 @@ section {
   position: absolute;
   left: 0;
   right: 0;
-  top: 9rem;
-  height: 7rem;
-  background: linear-gradient(to top, #0d0a0f, rgba(13, 10, 15, 0));
-}
-
-.haldi-card .event-image::after,
-.wedding-card .event-image::after {
-  top: auto;
   bottom: 0;
-  height: 6rem;
+  height: 6.2rem;
+  background: linear-gradient(to top, var(--event-bg-top, #fff7df), rgba(255, 247, 223, 0));
 }
 
 .cutlery-badge {
@@ -1088,10 +1077,10 @@ section {
   height: 4.7rem;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(212, 165, 116, 0.46);
+  border: 1px solid rgba(120, 69, 30, 0.2);
   border-radius: 50%;
-  color: #f0c27b;
-  background: rgba(13, 10, 15, 0.58);
+  color: var(--event-accent, #9a5a2d);
+  background: rgba(255, 248, 226, 0.76);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
 }
 
@@ -1140,24 +1129,25 @@ section {
 
 .event-date {
   margin: 0;
-  color: #c9a080;
+  color: var(--event-muted, #815f46);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.22rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .event-card h3 {
   margin: 0 0 0.55rem;
-  color: var(--ivory);
-  font-family: "Great Vibes", "Snell Roundhand", cursive;
-  font-size: clamp(2.55rem, 8vw, 4.1rem);
-  font-weight: 400;
+  color: var(--event-heading, var(--event-ink, #4b2a1f));
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 6vw, 3.25rem);
+  font-style: italic;
+  font-weight: 700;
   line-height: 1.05;
 }
 
 .event-subtitle {
   margin: 0.1rem 0 1rem;
-  color: #8a4d17;
+  color: var(--event-accent, #8a4d17);
   font-family: "Playfair Display", Georgia, serif;
   font-size: clamp(1.25rem, 4vw, 1.7rem);
   font-style: italic;
@@ -1165,17 +1155,17 @@ section {
 }
 
 .event-card p {
-  color: #a98b72;
+  color: var(--event-muted, #815f46);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.2rem;
   line-height: 1.55;
 }
 
 .event-card strong {
-  color: #c9a080;
+  color: var(--event-strong, var(--event-ink, #4b2a1f));
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.2rem;
-  font-weight: 500;
+  font-weight: 800;
 }
 
 .event-meta {
@@ -1190,47 +1180,59 @@ section {
 }
 
 .haldi-card {
-  padding-top: 1.8rem;
-  border-color: rgba(194, 136, 36, 0.35);
-  color: #442816;
-  background:
-    radial-gradient(circle at 8% 8%, rgba(255, 214, 89, 0.28), transparent 10rem),
-    radial-gradient(circle at 90% 0%, rgba(255, 245, 178, 0.5), transparent 13rem),
-    linear-gradient(180deg, #fff2b8, #ffe5a3 58%, #fff7d8);
-  box-shadow: 0 22px 72px rgba(172, 118, 23, 0.26);
+  --event-bg-top: #fff3b8;
+  --event-bg-bottom: #fff8db;
+  --event-glow: rgba(255, 212, 64, 0.34);
+  --event-ink: #56310f;
+  --event-heading: #67370d;
+  --event-muted: #6d481d;
+  --event-strong: #48270c;
+  --event-accent: #b57112;
+  border-color: rgba(194, 136, 36, 0.38);
+  box-shadow: 0 22px 72px rgba(172, 118, 23, 0.22);
 }
 
-.haldi-card::before {
-  content: "";
-  position: absolute;
-  inset: 0.7rem;
-  pointer-events: none;
-  border: 1px solid rgba(159, 105, 20, 0.22);
-  border-radius: 19px;
+.wedding-card {
+  --event-bg-top: #ffe7e3;
+  --event-bg-bottom: #fff5ed;
+  --event-glow: rgba(191, 63, 83, 0.18);
+  --event-ink: #5a2028;
+  --event-heading: #7e1f37;
+  --event-muted: #775052;
+  --event-strong: #4a1721;
+  --event-accent: #b84f59;
+  border-color: rgba(184, 79, 89, 0.32);
 }
 
-.haldi-card h3 {
-  color: #5a320f;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(2.25rem, 7vw, 3.45rem);
-  font-style: italic;
-  font-weight: 700;
+.lunch-card {
+  --event-bg-top: #fff3d5;
+  --event-bg-bottom: #eef8de;
+  --event-glow: rgba(241, 189, 53, 0.22);
+  --event-ink: #31451d;
+  --event-heading: #31613f;
+  --event-muted: #5d6138;
+  --event-strong: #293a18;
+  --event-accent: #b55727;
+  border-color: rgba(47, 122, 85, 0.34);
 }
 
-.haldi-card p,
-.haldi-card strong,
-.haldi-card .event-date,
-.haldi-card .meta-icon {
-  color: #593419;
+.reception-card {
+  --event-bg-top: #0e2342;
+  --event-bg-bottom: #071426;
+  --event-glow: rgba(128, 180, 240, 0.22);
+  --event-ink: #f4f8ff;
+  --event-heading: #e7f0ff;
+  --event-muted: #c2d6ef;
+  --event-strong: #ffffff;
+  --event-accent: #9fcbff;
+  border-color: rgba(130, 178, 232, 0.38);
 }
 
-.haldi-card .event-meta {
-  position: relative;
-  z-index: 1;
+.event-card .meta-icon {
+  color: var(--event-accent, #c9a080);
 }
 
-.haldi-card .event-note {
-  color: #533112;
+.event-note {
   font-size: clamp(1.04rem, 2.8vw, 1.2rem);
   line-height: 1.55;
 }
@@ -1791,12 +1793,6 @@ section {
 
   .event-image {
     height: clamp(16.5rem, 62vw, 19rem);
-  }
-
-  .haldi-card .event-image,
-  .wedding-card .event-image {
-    height: auto;
-    background-position: center, center top;
   }
 
   .hero-art {
