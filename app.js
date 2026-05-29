@@ -13,13 +13,31 @@ const shareInvite = document.querySelector("#shareInvite");
 let soundEnabled = true;
 let inviteOpened = false;
 
-const backgroundSong = new Audio("assets/mahiye-jinna-sohna.mp3");
-backgroundSong.loop = true;
+const songSrc = invite?.dataset.songSrc || "assets/mahiye-jinna-sohna.mp3";
+const songStart = Number.parseFloat(invite?.dataset.songStart || "0") || 0;
+const backgroundSong = new Audio(songSrc);
+backgroundSong.loop = false;
 backgroundSong.volume = 0.4;
 backgroundSong.preload = "auto";
 
+function seekToSongStart() {
+  if (!Number.isFinite(songStart) || songStart <= 0 || backgroundSong.currentTime >= songStart) return;
+  try {
+    backgroundSong.currentTime = songStart;
+  } catch {
+    backgroundSong.addEventListener("loadedmetadata", seekToSongStart, { once: true });
+  }
+}
+
+backgroundSong.addEventListener("loadedmetadata", seekToSongStart, { once: true });
+backgroundSong.addEventListener("ended", () => {
+  backgroundSong.currentTime = songStart;
+  playInviteSong();
+});
+
 function playInviteSong() {
   if (!soundEnabled) return;
+  seekToSongStart();
   backgroundSong.play().catch(() => {
     soundEnabled = false;
     soundToggle.classList.add("is-muted");

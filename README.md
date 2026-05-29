@@ -8,6 +8,10 @@ Static interactive wedding invitation site.
 - `june19.html` - June 19-only invite with wedding, lunch, and reception
 - `simple-family.html` - full two-day invite with simplified family names
 - `june19-simple-family.html` - June 19-only invite with simplified family names
+- `dhaga-full.html` - full two-day invite with Dhaga Dhaga track starting at 29 seconds
+- `dhaga-june19.html` - June 19-only invite with Dhaga Dhaga track starting at 29 seconds
+- `seven-pheras.html` - shareable viewer page for The Auspicious Seven Pheras PDF
+- `assets/auspicious-seven-pheras.pdf` - direct PDF link
 
 ## GitHub Pages
 
