@@ -1252,10 +1252,8 @@ section {
 .pheras-invite {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(15rem, 0.72fr) minmax(18rem, 1.28fr);
-  gap: clamp(1rem, 3vw, 1.8rem);
-  align-items: center;
-  max-width: 72rem;
+  gap: clamp(1.1rem, 3vw, 1.8rem);
+  max-width: 62rem;
   margin: 2.2rem auto 0;
   padding: clamp(1rem, 3vw, 1.4rem);
   border: 1px solid rgba(240, 194, 123, 0.34);
@@ -1291,7 +1289,7 @@ section {
 }
 
 .pheras-copy,
-.pheras-frame {
+.phera-pages {
   position: relative;
   z-index: 1;
 }
@@ -1299,7 +1297,9 @@ section {
 .pheras-copy {
   display: grid;
   gap: 1rem;
+  justify-items: center;
   padding: clamp(0.5rem, 2vw, 1.1rem);
+  text-align: center;
 }
 
 .pheras-copy .kicker {
@@ -1316,27 +1316,16 @@ section {
   line-height: 1.55;
 }
 
-.pdf-open-button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  min-height: 3rem;
-  padding: 0.75rem 1.2rem;
-  border: 1px solid rgba(255, 217, 139, 0.45);
-  border-radius: 999px;
-  color: #3b2644;
-  background: linear-gradient(135deg, #fff1bc, #f0c27b 52%, #d89d45);
-  box-shadow: 0 12px 30px rgba(16, 8, 20, 0.24);
-  font-weight: 850;
-  text-decoration: none;
+.phera-pages {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.55rem);
 }
 
-.pheras-frame {
-  min-height: clamp(28rem, 68vh, 42rem);
-  padding: clamp(0.65rem, 2vw, 1rem);
+.phera-page {
+  margin: 0;
+  padding: clamp(0.5rem, 2vw, 0.85rem);
   border: 1px solid rgba(255, 217, 139, 0.46);
-  border-radius: 24px;
+  border-radius: 20px;
   background:
     linear-gradient(#fffaf0, #fffaf0) padding-box,
     linear-gradient(135deg, #f7d58d, #9a5a2d, #f7d58d) border-box;
@@ -1346,13 +1335,11 @@ section {
   overflow: hidden;
 }
 
-.pheras-frame iframe {
+.phera-page img {
   display: block;
   width: 100%;
-  height: clamp(27rem, 66vh, 40rem);
-  border: 0;
-  border-radius: 17px;
-  background: #fffaf0;
+  height: auto;
+  border-radius: 13px;
 }
 
 .event-note {
@@ -1921,21 +1908,7 @@ section {
   }
 
   .pheras-invite {
-    grid-template-columns: 1fr;
     border-radius: 24px;
-  }
-
-  .pheras-copy {
-    text-align: center;
-    justify-items: center;
-  }
-
-  .pheras-frame {
-    min-height: 31rem;
-  }
-
-  .pheras-frame iframe {
-    height: 30rem;
   }
 
   .hero-art {
