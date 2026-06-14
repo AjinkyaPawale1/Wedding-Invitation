@@ -114,6 +114,11 @@
     .acard .fields,.ed{grid-template-columns:1fr}
     .btn,.btn.sm{padding:10px 12px}
     nav.tabs button{padding:9px 14px}
+    table.resp thead{display:none}
+    table.resp,table.resp tbody,table.resp tr,table.resp td{display:block;width:100%}
+    table.resp tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:6px 8px;background:#fff}
+    table.resp td{border:none;padding:5px 2px}
+    table.resp td::before{content:attr(data-label);display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.3px;color:var(--muted);margin-bottom:2px}
   }
 </style>
 </head>
@@ -138,6 +143,7 @@
     </div>
     <div class="card">
       <h3 style="color:var(--red)">⚠ Needs attention</h3>
+      <div class="hint">Items someone has flagged with the <b>Needs&nbsp;Attention</b> status — meaning it is stuck, at risk, or needs a decision. Anyone can set or clear it on a card via Edit → Status. Empty here means nothing is flagged.</div>
       <div id="attnList"></div>
     </div>
     <div class="card">
@@ -168,7 +174,6 @@
         <button class="btn ghost sm" onclick="exportJSON()">Export data (JSON)</button>
         <button class="btn ghost sm" onclick="copyAllotmentCSV()">Copy as CSV</button>
         <button class="btn ghost sm" onclick="importJSONPrompt()">Import JSON</button>
-        <button class="btn danger sm" onclick="resetAll()">Reset to default plan</button>
       </div>
       <div class="alist" id="allotList"></div>
     </div>
@@ -181,8 +186,8 @@
       <div class="hint">Category-wise point people and vendors. Phone fields are blank where unknown — fill them in.</div>
       <div class="toolbar"><button class="btn" onclick="addContact()">+ Add contact</button></div>
       <div class="tablewrap">
-        <table>
-          <thead><tr><th>Category</th><th>Name</th><th>Role</th><th>Phone</th><th>Notes</th><th></th></tr></thead>
+        <table class="resp">
+          <thead><tr><th>Category</th><th>Name</th><th>Role</th><th>Phone</th><th>Notes</th></tr></thead>
           <tbody id="contactBody"></tbody>
         </table>
       </div>
@@ -196,8 +201,8 @@
       <div class="hint">Minimal tracker only. <b>Groom's parents coordinate most payments</b> — this is just for a few pending settlements or last-minute cash coordination.</div>
       <div class="toolbar"><button class="btn" onclick="addFinance()">+ Add payment line</button></div>
       <div class="tablewrap">
-        <table>
-          <thead><tr><th>Payment / Vendor / Item</th><th>Amount</th><th>Status</th><th>Paid / Coordinated by</th><th>Due / Event day</th><th>Notes</th><th></th></tr></thead>
+        <table class="resp">
+          <thead><tr><th>Payment / Vendor / Item</th><th>Amount</th><th>Status</th><th>Paid / Coordinated by</th><th>Due / Event day</th><th>Notes</th></tr></thead>
           <tbody id="finBody"></tbody>
         </table>
       </div>
@@ -302,27 +307,6 @@
         <li>Selfie booth (complimentary)</li>
       </ul>
     </div>
-
-    <div class="card">
-      <h3>Working decoration checklist</h3>
-      <div class="hint">Editable tracking table, pre-filled from the décor brief above. Assign owner, set status, add items, or paste from a spreadsheet.</div>
-      <div class="toolbar">
-        <button class="btn" onclick="addDecor()">+ Add item</button>
-        <button class="btn ghost sm" onclick="togglePaste()">Paste rows</button>
-        <button class="btn ghost sm" onclick="copyDecorCSV()">Copy as CSV</button>
-      </div>
-      <div id="pasteArea" style="display:none;margin-bottom:12px">
-        <div class="small">Paste tab-separated cells. Column order: Item, Quantity, Location, Vendor, Owner, Setup time, Status, Notes.</div>
-        <textarea id="pasteBox" class="note-block" placeholder="Marigold garlands&#9;200&#9;Main stage&#9;Sharma Decor&#9;&#9;2:00 PM&#9;Not Started&#9;"></textarea>
-        <div class="toolbar"><button class="btn sm" onclick="parsePaste()">Add pasted rows</button></div>
-      </div>
-      <div class="tablewrap">
-        <table>
-          <thead><tr><th>Item</th><th>Qty</th><th>Location</th><th>Vendor</th><th>Owner</th><th>Setup</th><th>Status</th><th>Notes</th><th></th></tr></thead>
-          <tbody id="decorBody"></tbody>
-        </table>
-      </div>
-    </div>
   </section>
 
   <!-- NOTES -->
@@ -393,11 +377,11 @@ function seed(){
   A('Varat','Varat Schedule-Keeping','Keep everyone on schedule before & during varat','','','','19 Jun morning','—','Not Started','','Split'),
   A('Varat','Overall Varat Movement Tracking','Track full varat movement end to end','','','','19 Jun','Route','Not Started','','Split'),
   A('Transport','Transport Coordination','Guest / vendor / family vehicle movement as needed','','','','All days','—','Not Started','Kept separate from Varat lead.','New'),
-  A('Floor Navigation','Floor Navigation Coordination','Guide guests between halls/floors — to food, stage, rooms, event areas','','','','19 Jun 1:00–3:30 PM','Emerald 1 ↔ Emerald 2','Needs Attention','Critical during parallel lunch/reception overlap.','New'),
+  A('Floor Navigation','Floor Navigation Coordination','Guide guests between halls/floors — to food, stage, rooms, event areas','','','','19 Jun 1:00–3:30 PM','Emerald 1 ↔ Emerald 2','Not Started','Critical during parallel lunch/reception overlap.','New'),
   A('Decoration','Decoration Coordinator','Coordinate decorator/vendor; track setup, changes, approvals, cleanup (see Decoration tab)','','','','18–19 Jun','All halls','Not Started','Linked to Decoration Items page.','New'),
   A('Reception','Reception Stage Management','Accept gifts, help bride & groom, manage photography sessions, control on-stage guest flow, coordinate photographer & family','','','','19 Jun 1:30–3:30 PM','Emerald 1, Ground Fl','Not Started','Separate from mandap-removal/lunch-batching stage coordination.','New'),
   A('Reception','Gift Collection Support','Receive & safely store any gifts at reception','','','','19 Jun 1:30–3:30 PM','Emerald 1, Ground Fl','Not Started','Couple requested no gifts — support for any that arrive.','New'),
-  A('Stage & Flow','Stage Coordinator & Time Management','Remove vidhi mandap, send guests to lunch in batches, manage post-ritual flow, coordinate venue/decorator/family/photographer, prevent crowding & delays','','','','19 Jun ~12:40–1:30 PM','Emerald 1 ↔ Emerald 2','Needs Attention','Separate from reception stage management.','New'),
+  A('Stage & Flow','Stage Coordinator & Time Management','Remove vidhi mandap, send guests to lunch in batches, manage post-ritual flow, coordinate venue/decorator/family/photographer, prevent crowding & delays','','','','19 Jun ~12:40–1:30 PM','Emerald 1 ↔ Emerald 2','Not Started','Separate from reception stage management.','New'),
   A('Stage & Flow','Cleanup & Setup Coordinator','Cleanup after wedding, setup for reception; coordinate venue/decorator/family/vendors; track remove/move/reset','','','','19 Jun post-ritual','Emerald halls','Not Started','','New'),
   A('Distribution','Manpan Distribution Coordinator','Track items, recipients, owner, completion','','','','19 Jun','—','Not Started','','New'),
   A('Distribution','Phetewala / Pheta Distribution Coordinator','Pheta distribution, timing, quantity, owner','','','','19 Jun','—','Not Started','','New'),
@@ -484,7 +468,6 @@ function renderAllot(){
       </div>
       <div class="acts">
         <button class="btn sm" onclick="editAllot('${r.id}')">Edit</button>
-        <button class="btn danger sm" onclick="delAllot('${r.id}')">Delete</button>
       </div>`;
     }
     list.appendChild(d);
@@ -528,24 +511,24 @@ function render(section){({contacts:renderContacts,finance:renderFinance,items:r
 /* contacts */
 function renderContacts(){const b=document.getElementById('contactBody');b.innerHTML='';
   DB.contacts.forEach(r=>{const tr=document.createElement('tr');tr.innerHTML=`
-    <td><input value="${esc(r.category)}" oninput="upd('contacts','${r.id}','category',this.value)"></td>
-    <td><input value="${esc(r.name)}" oninput="upd('contacts','${r.id}','name',this.value)"></td>
-    <td><input value="${esc(r.role)}" oninput="upd('contacts','${r.id}','role',this.value)"></td>
-    <td><input value="${esc(r.phone)}" placeholder="phone" oninput="upd('contacts','${r.id}','phone',this.value)"></td>
-    <td><input value="${esc(r.notes)}" oninput="upd('contacts','${r.id}','notes',this.value)"></td>
-    <td><button class="btn danger sm" onclick="delGen('contacts','${r.id}')">Del</button></td>`;b.appendChild(tr);});}
+    <td data-label="Category"><input value="${esc(r.category)}" oninput="upd('contacts','${r.id}','category',this.value)"></td>
+    <td data-label="Name"><input value="${esc(r.name)}" oninput="upd('contacts','${r.id}','name',this.value)"></td>
+    <td data-label="Role"><input value="${esc(r.role)}" oninput="upd('contacts','${r.id}','role',this.value)"></td>
+    <td data-label="Phone"><input value="${esc(r.phone)}" placeholder="phone" oninput="upd('contacts','${r.id}','phone',this.value)"></td>
+    <td data-label="Notes"><input value="${esc(r.notes)}" oninput="upd('contacts','${r.id}','notes',this.value)"></td>
+    `;b.appendChild(tr);});}
 function addContact(){DB.contacts.push(c('','','','',''));save();renderContacts();}
 
 /* finance */
 function renderFinance(){const b=document.getElementById('finBody');b.innerHTML='';
   DB.finance.forEach(r=>{const tr=document.createElement('tr');tr.innerHTML=`
-    <td><input value="${esc(r.item)}" oninput="upd('finance','${r.id}','item',this.value)"></td>
-    <td><input value="${esc(r.amount)}" placeholder="₹" style="min-width:70px" oninput="upd('finance','${r.id}','amount',this.value)"></td>
-    <td><select onchange="upd('finance','${r.id}','status',this.value)"><option ${r.status==='Pending'?'selected':''}>Pending</option><option ${r.status==='Paid'?'selected':''}>Paid</option></select></td>
-    <td><input value="${esc(r.by)}" oninput="upd('finance','${r.id}','by',this.value)"></td>
-    <td><input value="${esc(r.due)}" oninput="upd('finance','${r.id}','due',this.value)"></td>
-    <td><input value="${esc(r.notes)}" oninput="upd('finance','${r.id}','notes',this.value)"></td>
-    <td><button class="btn danger sm" onclick="delGen('finance','${r.id}')">Del</button></td>`;b.appendChild(tr);});}
+    <td data-label="Payment / Vendor / Item"><input value="${esc(r.item)}" oninput="upd('finance','${r.id}','item',this.value)"></td>
+    <td data-label="Amount"><input value="${esc(r.amount)}" placeholder="₹" style="min-width:70px" oninput="upd('finance','${r.id}','amount',this.value)"></td>
+    <td data-label="Status"><select onchange="upd('finance','${r.id}','status',this.value)"><option ${r.status==='Pending'?'selected':''}>Pending</option><option ${r.status==='Paid'?'selected':''}>Paid</option></select></td>
+    <td data-label="Paid / Coordinated by"><input value="${esc(r.by)}" oninput="upd('finance','${r.id}','by',this.value)"></td>
+    <td data-label="Due / Event day"><input value="${esc(r.due)}" oninput="upd('finance','${r.id}','due',this.value)"></td>
+    <td data-label="Notes"><input value="${esc(r.notes)}" oninput="upd('finance','${r.id}','notes',this.value)"></td>
+    `;b.appendChild(tr);});}
 function addFinance(){DB.finance.push(f('','','Pending','Groom\'s Parents','',''));save();renderFinance();}
 
 /* items */
@@ -554,8 +537,7 @@ function renderItems(){const b=document.getElementById('itemList');b.innerHTML='
     <input type="checkbox" ${r.done?'checked':''} onchange="upd('items','${r.id}','done',this.checked);renderItems()">
     <input class="nm" value="${esc(r.name)}" oninput="upd('items','${r.id}','name',this.value)">
     <input placeholder="owner" value="${esc(r.owner)}" oninput="upd('items','${r.id}','owner',this.value)">
-    <input class="grow" placeholder="notes" value="${esc(r.notes)}" oninput="upd('items','${r.id}','notes',this.value)">
-    <button class="btn danger sm" onclick="delGen('items','${r.id}')">Del</button>`;b.appendChild(d);});}
+    <input class="grow" placeholder="notes" value="${esc(r.notes)}" oninput="upd('items','${r.id}','notes',this.value)">`;b.appendChild(d);});}
 function addItem(){DB.items.push(it('',false,'',''));save();renderItems();}
 
 /* notes (numbered topic + note) */
@@ -565,8 +547,7 @@ function renderNotes(){const b=document.getElementById('noteList');b.innerHTML='
     <div class="body">
       <input class="tp" style="width:100%;border:none;font-weight:700;color:var(--maroon)" value="${esc(r.topic)}" oninput="upd('noteItems','${r.id}','topic',this.value)">
       <textarea style="width:100%;border:none" oninput="upd('noteItems','${r.id}','note',this.value)">${esc(r.note)}</textarea>
-    </div>
-    <button class="btn danger sm" onclick="delGen('noteItems','${r.id}')">Del</button>`;b.appendChild(d);});}
+    </div>`;b.appendChild(d);});}
 function addNote(){const tp=document.getElementById('noteTopic').value.trim();const tx=document.getElementById('noteText').value.trim();
   if(!tp&&!tx)return;DB.noteItems.push(nt(tp||'Note',tx));document.getElementById('noteTopic').value='';document.getElementById('noteText').value='';save();renderNotes();}
 
@@ -582,7 +563,7 @@ function renderDecor(){const b=document.getElementById('decorBody');b.innerHTML=
     <td><input value="${esc(r.setup)}" style="min-width:75px" oninput="upd('decor','${r.id}','setup',this.value)"></td>
     <td><select onchange="upd('decor','${r.id}','status',this.value)">${STATUSES.map(s=>`<option ${r.status===s?'selected':''}>${s}</option>`).join('')}</select></td>
     <td><input value="${esc(r.notes)}" oninput="upd('decor','${r.id}','notes',this.value)"></td>
-    <td><button class="btn danger sm" onclick="delGen('decor','${r.id}')">Del</button></td>`;b.appendChild(tr);});}
+    `;b.appendChild(tr);});}
 function addDecor(){DB.decor.push(decorRow());save();renderDecor();}
 function togglePaste(){const p=document.getElementById('pasteArea');p.style.display=p.style.display==='none'?'block':'none';}
 function parsePaste(){const txt=document.getElementById('pasteBox').value.trim();if(!txt)return;let added=0;
@@ -669,7 +650,7 @@ function timeKey(tl){tl=(tl||'').toLowerCase();let day=100;
 function renderDashboard(){
   const A=DB.allotment.filter(r=>r.tag!=='Removed');
   const cnt=s=>A.filter(r=>r.status===s).length;
-  const stats=[['Total',A.length,''],['Needs attention',cnt('Needs Attention'),'attn'],['In progress',cnt('In Progress'),'prog'],['Done',cnt('Done'),'done'],['Not started',cnt('Not Started'),''],['Items to pack',DB.items.filter(i=>!i.done).length,'']];
+  const stats=[['Total',A.length,''],['Needs attention',cnt('Needs Attention'),'attn'],['In progress',cnt('In Progress'),'prog'],['Done',cnt('Done'),'done'],['Not started',cnt('Not Started'),''],['Unassigned owner',A.filter(r=>!(r.point||'').trim()).length,''],['Items to pack',DB.items.filter(i=>!i.done).length,'']];
   document.getElementById('statGrid').innerHTML=stats.map(([l,n,cls])=>`<div class="stat ${cls}"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('');
   const ql=[['allotment','All Allotment',''],['allotment','Catering','Catering'],['allotment','Guest Coordination','Guest Coordination'],['allotment','Varat','Varat'],['allotment','Stage & Flow','Stage & Flow'],['allotment','Reception','Reception'],['contacts','Contacts',''],['finance','Finance',''],['halls','Hall Maps',''],['decor','Decoration',''],['items','Items',''],['notes','Notes','']];
   document.getElementById('quickLinks').innerHTML=ql.map(([id,label,cat])=>`<button onclick="show('${id}'${cat?",'"+cat.replace(/'/g,"\\'")+"'":''})">${label}</button>`).join('');
@@ -690,7 +671,7 @@ function fallbackCopy(txt,msg){const ta=document.createElement('textarea');ta.va
 function resetAll(){if(confirm('Reset everything to the original merged plan? Your edits will be lost.')){DB=seed();persist();renderAll();}}
 
 /* ---------------- init ---------------- */
-function renderAll(){renderAllot();renderContacts();renderFinance();renderItems();renderNotes();renderDecor();renderMap('solitaire');renderMap('emerald');renderDashboard();}
+function renderAll(){renderAllot();renderContacts();renderFinance();renderItems();renderNotes();renderMap('solitaire');renderMap('emerald');renderDashboard();}
 renderAll();
 show('dashboard');
 </script>
