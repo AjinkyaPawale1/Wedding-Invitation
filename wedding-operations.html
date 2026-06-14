@@ -136,7 +136,7 @@
   <section class="page" id="dashboard">
     <div class="card">
       <h2>Dashboard</h2>
-      <div class="hint">Live snapshot. Tap a quick link to jump to any section.</div>
+      <div class="hint">Live snapshot. Tap a quick link to jump to any section. <span id="syncBadge" style="font-weight:700"></span></div>
       <div class="dash-grid" id="statGrid"></div>
       <h3>Quick links</h3>
       <div class="quick" id="quickLinks"></div>
@@ -348,6 +348,11 @@
   <div class="tagline">Forever &amp; Always • Sadaiv Sobat</div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+<script>
+var FIREBASE_CONFIG={apiKey:"AIzaSyDN96Tq3VsF6h0Dd7dmOc-lMVaQ6LHUVQ0",authDomain:"wedding-operation.firebaseapp.com",databaseURL:"https://wedding-operation-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"wedding-operation",storageBucket:"wedding-operation.firebasestorage.app",messagingSenderId:"265290600865",appId:"1:265290600865:web:9a6a16f012757bbc26fbe0"};
+</script>
 <script>
 /* ---------------- storage ---------------- */
 const KEY='weddingOpsV5';
@@ -425,7 +430,27 @@ const BAKED_STR="{\"allotment\": [{\"id\": \"9jdwl56a\", \"category\": \"Guest C
 function seed(){return JSON.parse(BAKED_STR);}
 let DB=load();
 function load(){try{const r=localStorage.getItem(KEY);if(r){const d=JSON.parse(r);d.decorSheets=d.decorSheets||[];d.noteItems=d.noteItems||[];d.maps=d.maps||{};return d;}}catch(e){}const s=seed();persist(s);return s;}
-function persist(d){localStorage.setItem(KEY,JSON.stringify(d||DB));}
+function persistLocal(d){localStorage.setItem(KEY,JSON.stringify(d||DB));}
+let RT=null,applyingRemote=false,pushTimer=null,lastPushed=null;
+function ensureDefaults(d){d.allotment=d.allotment||[];d.contacts=d.contacts||[];d.finance=d.finance||[];d.items=d.items||[];d.noteItems=d.noteItems||[];d.decor=d.decor||[];d.decorSheets=d.decorSheets||[];d.maps=d.maps||{};}
+function persist(d){persistLocal(d);pushRemote();}
+function setSyncStatus(s){const b=document.getElementById('syncBadge');if(!b)return;if(s==='live'){b.textContent='\u25CF Live sync on';b.style.color='var(--green)';}else{b.textContent='\u25CB Offline (this device only)';b.style.color='var(--muted)';}}
+function pushRemoteNow(){if(!RT)return;const c=JSON.parse(JSON.stringify(DB));(c.allotment||[]).forEach(r=>{delete r.editing;delete r.isNew;delete r._saved;});lastPushed=JSON.stringify(c);RT.set(c).catch(()=>{});}
+function pushRemote(){if(!RT||applyingRemote)return;clearTimeout(pushTimer);pushTimer=setTimeout(pushRemoteNow,500);}
+function applyRemote(val){applyingRemote=true;DB=val;ensureDefaults(DB);persistLocal(DB);renderAll();applyingRemote=false;}
+function initFirebase(){
+  if(typeof FIREBASE_CONFIG==='undefined'||!window.firebase){setSyncStatus('offline');return;}
+  try{
+    firebase.initializeApp(FIREBASE_CONFIG);
+    RT=firebase.database().ref('weddingBoard');
+    let seeded=false;
+    RT.on("value",function(snap){
+      const val=snap.val();
+      if(!seeded){seeded=true; if(val&&val.allotment){applyRemote(val);} else {pushRemoteNow();} setSyncStatus("live"); return;}
+      if(val&&JSON.stringify(val)!==lastPushed){applyRemote(val);}
+    },function(){setSyncStatus("offline");});
+  }catch(e){setSyncStatus("offline");}
+}
 function save(){persist(DB);renderDashboard();}
 function esc(s){return (s==null?'':(''+s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
@@ -458,7 +483,7 @@ function renderAllot(){
     if(ft&&r.tag!==ft)return false;
     if(q){const hay=[r.category,r.item,r.included,r.point,r.backup,r.contact,r.timeline,r.venue,r.status,r.notes,r.tag].join(' ').toLowerCase();if(!hay.includes(q))return false;}
     return true;
-  }).forEach(r=>{
+  }).sort((a,b)=>allotSortKey(a)-allotSortKey(b)).forEach(r=>{
     const d=document.createElement('div');d.className='acard'+(r.tag==='Removed'?' removed':'');
     if(r.editing){d.innerHTML=allotEdit(r);}
     else{
@@ -661,6 +686,7 @@ function timeKey(tl){tl=(tl||'').toLowerCase();let day=100;
   if(tok&&(hasColon||apm)){let h=+tok[1];const mm=+(tok[2]||0);if(apm){h=h%12;if(apm[1]==='p')h+=12;}min=h*60+mm;}
   else if(t2.includes('morning'))min=480;else if(t2.includes('afternoon'))min=840;else if(t2.includes('evening'))min=1140;
   return day*2000+min;}
+function allotSortKey(r){const k=timeKey(r.timeline);return k>=198000?(17*2000+720):k;}
 function renderDashboard(){
   const A=DB.allotment.filter(r=>r.tag!=='Removed');
   const cnt=s=>A.filter(r=>r.status===s).length;
@@ -688,6 +714,7 @@ function resetAll(){if(confirm('Reset everything to the original merged plan? Yo
 function renderAll(){renderAllot();renderContacts();renderFinance();renderItems();renderNotes();renderMap('solitaire');renderMap('emerald');renderDashboard();}
 renderAll();
 show('dashboard');
+initFirebase();
 </script>
 </body>
 </html>
