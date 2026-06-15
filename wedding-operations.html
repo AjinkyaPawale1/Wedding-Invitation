@@ -552,7 +552,7 @@ function renderContacts(){const b=document.getElementById('contactBody');b.inner
     <td data-label="Name"><input value="${esc(r.name)}" oninput="upd('contacts','${r.id}','name',this.value)"></td>
     <td data-label="Role"><input value="${esc(r.role)}" oninput="upd('contacts','${r.id}','role',this.value)"></td>
     <td data-label="Phone"><input value="${esc(r.phone)}" placeholder="phone" oninput="upd('contacts','${r.id}','phone',this.value)"></td>
-    <td data-label="Notes"><input value="${esc(r.notes)}" oninput="upd('contacts','${r.id}','notes',this.value)"></td>
+    <td data-label="Notes" style="min-width:200px"><textarea rows="2" style="width:100%;min-height:38px" placeholder="notes" oninput="upd('contacts','${r.id}','notes',this.value)">${esc(r.notes)}</textarea></td>
     `;b.appendChild(tr);});}
 function addContact(){DB.contacts.push(c('','','','',''));save();renderContacts();}
 
